@@ -28,6 +28,7 @@ class InlineStyle
 
   def initialize html, opts = {}
     @stylesheets_path = opts[:stylesheets_path] || ENV['DOCUMENT_ROOT'] || '.'
+    @ignore_linked_stylesheets = opts[:ignore_linked_stylesheets] || false
     @html           = html
     @dom = String === html ? Nokogiri.HTML(html) : html
   end
@@ -79,7 +80,8 @@ class InlineStyle
 
   # Returns parsed CSS
   def extract_css
-    @dom.css('style, link[rel=stylesheet]').collect do |node|
+    css_search = @ignore_linked_stylesheets ? 'style' : 'style, link[rel=stylesheet]'    
+    @dom.css(css_search).collect do |node|
       next unless /^$|screen|all/ === node['media'].to_s
       node.remove
 

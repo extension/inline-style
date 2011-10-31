@@ -24,6 +24,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mail'
 
   s.add_dependency 'nokogiri'
-  s.add_dependency 'css_parser'
-  s.add_dependency 'maca-fork-csspool'
+  #s.add_dependency 'css_parser'
+  s.add_dependency 'csspool'
 end

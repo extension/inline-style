@@ -1,3 +1,3 @@
 class InlineStyle
-  VERSION = '0.5.1ex'
+  VERSION = '0.5.2ex'
 end
